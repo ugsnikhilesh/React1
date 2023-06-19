@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import './App.css'
+import './index.css'
 
-function App() {
+const App = () => {
+  const [count, setCount] = useState(0);
+  const handleChange = () => {
+    var str = document.getElementById("text").value;
+    var c = str.split(' ').filter((num) => { return num != '' }).length;
+    setCount(c);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <div className="outer">
+        <h2>Responsive Paragraph Word Counter</h2>
+        <textarea rows={10} onChange={handleChange} id="text"></textarea>
+        <p>Word Count : {count} </p>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
